@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql
+    command: ["--default-authentication-plugin=caching_sha2_password"]
+    restart: always
+    environment:
+      MYSQL_DATABASE: "fullstack"
+      #MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      # MYSQL_USER: "root"
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_PASSWORD: 123456
+
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - 3306:3306
+volumes:
+  db:

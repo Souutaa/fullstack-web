@@ -16,9 +16,10 @@ const Home = () => {
       {listPosts.map((value, key) => {
         return (
           <div
+            key={key}
             className="post"
             onClick={() => {
-              history(`/post/${value.id}`);
+              history(`/posts/${value.id}`);
             }}
           >
             <div className="title"> {value.title}</div>

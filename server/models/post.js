@@ -1,26 +1,23 @@
-"use strict";
-const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Posts extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Posts.init(
-    {
-      title: DataTypes.STRING,
-      postText: DataTypes.STRING,
-      username: DataTypes.STRING,
+  const Posts = sequelize.define("Posts", {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    {
-      sequelize,
-      modelName: "Posts",
-    }
-  );
+    postText: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  });
+
+  Posts.associate = (models) => {
+    Posts.hasMany(models.Comments, {
+      onDelete: "cascade",
+    });
+  };
   return Posts;
 };

@@ -8,8 +8,12 @@ app.use(express.json()); // cho phép sử dụng json
 app.use(cors()); //xác thực người dùng
 
 // Routers
-const postRouter = require("./routes/PostsRouter.js");
-app.use("/posts", postRouter);
+const postsRouter = require("./routes/PostsRouter.js");
+app.use("/posts", postsRouter);
+const commentsRouter = require("./routes/CommentsRouter.js");
+app.use("/comments", commentsRouter);
+const usersRouter = require("./routes/UsersRouter.js");
+app.use("/auth", usersRouter);
 
 //connect database
 db.sequelize.sync().then(() => {

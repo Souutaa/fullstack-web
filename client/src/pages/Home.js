@@ -1,7 +1,6 @@
-import React from "react";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [listPosts, setListPosts] = useState([]);
   let history = useNavigate();
